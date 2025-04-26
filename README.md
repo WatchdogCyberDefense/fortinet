@@ -8,7 +8,7 @@ This repository provides a compact Cyber Threat Intelligence (CTI) feed for Fort
 
 ### Script Contribution
 
-*Contributed by:* **UAS.com.ph**
+*Contributed by:* 
 
 ---
 
