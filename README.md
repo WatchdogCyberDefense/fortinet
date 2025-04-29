@@ -4,18 +4,23 @@
 
 This repository provides a compact Cyber Threat Intelligence (CTI) feed for Fortigate Firewalls. Powered by AI/ML reinforcement learning, it delivers a minimal list of malicious IP addresses that blocks 60–70% of attacks. The small size ensures compatibility with most Fortigate models and uses minimal CPU resources, making it an efficient security solution for your network. This is "Security for the 99%"
 
+Check for Limitations. For example on a FortiGate 400F:
+o	✅ Maximum 5,000 address objects
+o	✅ Maximum 600 IPs per address group
+
+
 ---
 
 ### Script Contribution
 
 *Contributed by:* 
-
+UAS.com.ph
 ---
 
 ### Prerequisites
 
 - Download the `WatchDogBlocklist-current.csv` file to your desktop.
-- If needed, rename the file to `WatchDogBlocklist-current.csv`.
+- If needed, rename the file to `WatchDogBlocklist-current.csv`. Rename it to [blocklist-addresses.conf]
 - Then Upload the file to your Fortigate firewall.
 
 ---
@@ -25,7 +30,7 @@ This repository provides a compact Cyber Threat Intelligence (CTI) feed for Fort
 Import the blocklist file into your Fortigate Firewall using the following command:
 
 ```shell
-**** instructions to follow ****
+execute batch-script tftp blocklist-addresses.conf
 
 ```
 
@@ -36,12 +41,27 @@ Import the blocklist file into your Fortigate Firewall using the following comma
 Add the following firewall filter rules to drop connections from IPs listed in the WatchDogBlocklist:
 
 ```plaintext
-**** instructions to follow ****
+config firewall policy
+edit 0
+    set name "Deny_WAN_Attempts"
+    set srcintf "wan1"              # adjust if different
+    set dstintf "wan1"
+    set srcaddr "Blocked_IP_Group_1" "Blocked_IP_Group2"
+    set dstaddr "all"
+    set action deny
+    set schedule "always"
+    set service "ALL"
+    set logtraffic enable           # Optional: disable if you want less logging
+next
+end
+
 ```
 
-You can delete the old list with this command: 
+You can verify and monitor with this command (Or enable hitcount in GUI:
+Policy & Objects > Firewall Policy > Columns > Hit Count
+) : 
 ```plaintext
-**** instructions to follow ****
+diagnose firewall iprope policy list
 ```
 ---
 
