@@ -16,6 +16,10 @@ UAS.com.ph
 - Download the `WatchDogBlocklist-current.csv` file to your desktop.
 - If needed, rename the file to `WatchDogBlocklist-current.csv`. Rename it to [blocklist-addresses.conf]
 - Then Upload the file to your Fortigate firewall.
+- Check for Limitations. For example on a FortiGate 400F:
+    o     Maximum 5,000 address objects
+    o     Maximum 600 IPs per address group
+---
 
 ---
 
