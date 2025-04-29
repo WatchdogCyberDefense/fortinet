@@ -3,10 +3,7 @@
 
 This repository provides a compact Cyber Threat Intelligence (CTI) feed for Fortigate Firewalls. Powered by AI/ML reinforcement learning, it delivers a minimal list of malicious IP addresses that blocks 60–70% of attacks. The small size ensures compatibility with most Fortigate models and uses minimal CPU resources, making it an efficient security solution for your network. This is "Security for the 99%"
 
-Check for Limitations. For example on a FortiGate 400F:
-o Maximum 5,000 address objects
-o Maximum 600 IPs per address group
----
+
 
 ### Script Contribution
 
